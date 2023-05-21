@@ -10,9 +10,12 @@ username = config.get("mail", "username")
 password = config.get("mail", "password")
 imap = config.get("mail", "imap")
 
-
-def main():
-    with Imbox(imap, username, password, ssl=True) as mailbox:
-        # 获取文件夹
-        folders = mailbox.folders()
-        print(folders)
+def folder_list():
+    # 连接到IMAP服务器
+    with Imbox(imap, username=username, password=password) as mailbox:
+        # 获取所有文件夹
+        status , folders = mailbox.folders()
+        # 打印所有文件夹
+        for folder in folders:
+            print(folder)
+        return folders  

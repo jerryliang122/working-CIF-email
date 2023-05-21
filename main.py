@@ -12,4 +12,4 @@ if not os.path.exists("data/config.cfg"):
 # 准备读取邮件的文件夹
 import imap_work.folder as folder
 
-folders = folder.main()
+folder.main()
